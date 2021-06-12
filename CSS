@@ -1,0 +1,30 @@
+body {   
+    text-align: center;
+  text-transform: uppercase; 
+}
+
+.jumbotron, body {
+    background-image: url(https://wallup.net/wp-content/uploads/2017/11/23/530431-landscape-lake-forest-horizon.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#weatherButton {
+    border:1px  solid #55819b;
+    background:#55819b;
+    color:#fff;
+}
+
+.display-1 {
+    font-weight: 1200;
+}
+
+#weather-info {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.lead {
+    font-weight: 600;
+}
