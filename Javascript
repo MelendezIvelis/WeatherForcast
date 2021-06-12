@@ -1,0 +1,28 @@
+var btnSubmit = document.getElementById('btnSubmit');
+var skyOutput = document.getElementById('skyOutput');
+var coordOutput = document.getElementById('coordOutput');
+var tempOutput = document.getElementById('tempOutput');
+btnSubmit.addEventListener('click', getWeather);
+var cityName = document.getElementById('input');
+
+function getWeather() {
+  var request = new XMLHttpRequest();
+  var url1 = 'https://api.openweathermap.org/data/2.5/weather?q=';
+  var url2 = '&appid=b7525fa091af8a47c41b85fc73f03def';
+  var url = url1 + cityName.value + url2;
+  request.open('GET', url);
+  //request.setRequestHeader('Content-Type', 'application/json');
+  request.send();
+  request.onload = function() {
+    // console.log(request.responseText);
+    var data = JSON.parse(request.responseText);
+    var sOutput = '<p>'+ cityName.value + ': ' + data.weather[0].description + '<p>';
+    skyOutput.innerHTML = sOutput;
+    var temp = (data.main.temp - 273.15) * 9/5 + 32;
+    var tOutput = '<p>'+ 'Temp: ' + 
+    temp.toFixed(2) + ' F' +'<p>';
+    tempOutput.innerHTML = tOutput;
+    var cOutput = '<p>'+ 'Coord: ' + data.coord.lon.toFixed(2) + ', ' + data.coord.lat.toFixed(2) + '<p>';
+    coordOutput.innerHTML = cOutput;
+  }
+}
